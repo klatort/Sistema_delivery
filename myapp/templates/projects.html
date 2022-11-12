@@ -1,0 +1,25 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+<h1>Projects in bd</h1>
+{% for project in projects %}
+<div>
+    <h2>{{project.name}}</h2>
+    {% for task in project.task_set.all %}
+        <form method="POST">
+            {{form}}
+            <h3>- {{task.name}}</h3>
+            <p>&emsp;{{task.description}}{%if task.done == False %}❌{%else%}✅{%endif%}</p>
+                {% csrf_token %}
+                <button>Done✅</button>
+        </form>
+    {% endfor %}
+</div>
+{% endfor %}
+<script>
+    tasks = document.getElementsByClassName("task");
+    tasks.array.forEach(element => {
+        element.value = "ewe";
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Delivery</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+
+<body>
+    {%comment%}
+    <nav>
+        <ul>
+            <li>
+                <a href="{% url 'index' %}">index</a>
+            </li>
+            <li>
+                <a href="{% url 'login' %}">login</a>
+            </li>
+            <li>     
+                <a href="{% url 'bye' %}">bye</a>
+            </li>
+            <li>
+                <a href="{% url 'uwu' %}">uwu<3</a>
+            </li>
+            <li>    
+                <a href="{% url 'projects' %}">Projects</a>
+            </li>
+            <li>
+                <a href="{% url 'form' %}">Tasks owo</a>
+            </li>
+        </ul>
+    </nav>
+    {%endcomment%}  
+</body>
+</html>
+
+{% block content %}
+{% endblock %}

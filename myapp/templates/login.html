@@ -1,0 +1,34 @@
+{% extends 'layout/base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div>
+    <div>
+        <div class="top-logo">
+            <img class="image" src="{% static 'assets/express_delivery.png' %}"/>
+        </div>
+    </div>
+    <form method="POST">
+    <div>
+        <div class="mid-options">    
+            {% csrf_token %}
+            {{form.as_div}}
+        </div>
+        <div>
+            <div class="low-buttons">
+                <button type="submit" name="login"
+                class="option-buttons">Ingresar</button>
+                <button type="submit" name="omitir"
+                class="option-buttons">Omitir</button>
+            </div>
+        </div>
+    </div>
+    </form>    
+    <div class="mid-options">
+        {% for message in messages %}
+            <p style="color:red;"{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
