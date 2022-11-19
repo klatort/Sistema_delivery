@@ -1,0 +1,46 @@
+.navbar{
+    background: #FF6464;
+}
+
+.navbar ul{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.navbar ul li{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    list-style: none;
+}
+
+.navbar ul li a{
+    text-decoration: none;
+    color: white;
+}
+
+.link:hover{  
+    padding: 15px;
+    border-radius: 25px;
+    background: #000000;
+}
+
+h1{
+    font-size: 50px;
+}
+
+.icon {
+    margin-right: 20px;
+    max-height: 25px;
+    vertical-align: middle;
+}
+
+.icon:hover{
+    margin-top: -15px;
+    margin-bottom: -15px;   
+    padding: 15px;
+    border-radius: 25px;
+    background: rgb(0, 0, 0);
+}

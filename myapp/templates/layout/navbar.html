@@ -1,0 +1,31 @@
+{% extends 'layout/base.html' %}
+
+{% load static %}
+
+{% block navbar %}
+<nav class="navbar">
+    <ul>
+        <li>
+            <a class="link" href="{% url 'index' %}">Inicio</a>
+        </li>
+        <li>
+            <a class="link" href="{% url 'index' %}">Productos</a>
+        </li>
+        <li>
+            <a class="link" href="{% url 'test' %}">test</a>
+        </li>
+        <li>
+            <a class="link" {% if usuario == "Invitado" or usuario == "" %}href="{% url 'login' %}">Login
+                {% else %} href="{% url 'index' %}">Bienvenido, {{ usuario }}
+                {% endif %}
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'test' %}">
+                <img class="icon" src="{% static 'assets/carrito.png' %}"/>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+{% endblock %}

@@ -11,8 +11,8 @@
     </div>
     <form method="POST">
     <div class="form">
-        <div class="mid-options">
-            <h1>Login</h1>    
+        <div class="mid-options"  style="margin-top: 15%">
+            <h1>Registro</h1>    
             {% csrf_token %}
             {{form.as_div}}
             {% for message in messages %}
@@ -21,13 +21,13 @@
         </div>
         <div>
             <div class="low-buttons">
-                <button type="submit" name="login"
-                class="option-buttons">Ingresar</button>
+                <button type="submit" name="register"
+                class="option-buttons">Registrarse</button>
             </div>
         </div>
         <div style="margin-left: 10%; margin-top: 5%;">
             <div style="margin-bottom: 10px;">
-                ¿No tienes cuenta?<a href="{% url 'register' %}">Registrarse</a>
+                ¿No tienes cuenta?<a href="{% url 'login' %}">Login</a>
             </div>
             <div>
                 ¿Estás de paso?<a href="{% url 'index' %}">Omitir</a>

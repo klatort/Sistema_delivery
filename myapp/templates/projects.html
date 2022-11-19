@@ -1,4 +1,4 @@
-{% extends 'layout/base.html' %}
+{% extends 'layout/navbar.html' %}
 
 {% block content %}
 <h1>Projects in bd</h1>
@@ -7,11 +7,10 @@
     <h2>{{project.name}}</h2>
     {% for task in project.task_set.all %}
         <form method="POST">
-            {{form}}
             <h3>- {{task.name}}</h3>
             <p>&emsp;{{task.description}}{%if task.done == False %}❌{%else%}✅{%endif%}</p>
                 {% csrf_token %}
-                <button>Done✅</button>
+            <button name="{{task.name}}">Done✅</button>
         </form>
     {% endfor %}
 </div>
