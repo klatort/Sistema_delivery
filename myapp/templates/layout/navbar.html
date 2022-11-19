@@ -11,9 +11,9 @@
         <li>
             <a class="link" href="{% url 'index' %}">Productos</a>
         </li>
-        <li>
+        <!--<li>
             <a class="link" href="{% url 'test' %}">test</a>
-        </li>
+        </li>-->
         <li>
             <a class="link" {% if usuario == "Invitado" or usuario == "" %}href="{% url 'login' %}">Login
                 {% else %} href="{% url 'index' %}">Bienvenido, {{ usuario }}
