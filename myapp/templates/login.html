@@ -27,7 +27,7 @@
     </form>    
     <div class="mid-options">
         {% for message in messages %}
-            <p style="color:red;"{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+            <p {% if message.tags %} class="alert"{% endif %}>{{ message }}</p>
         {% endfor %}
     </div>
 </div>
