@@ -11,13 +11,13 @@ html *{
 .top-logo {
   display: flex;
   justify-content: left;
-  width: 50%;
-  height: auto;
+  margin-top: -8px;
+  margin-left: -8px;
 }
 
 .image {
   width: auto;
-  height: 98vh;
+  height: 99.2vh;
 }
 
 .form{
@@ -40,8 +40,9 @@ html *{
   display: block;
   border-radius: 15px 15px 15px 15px;
   border: none;
-  background-color: #A8ABA1;
-  width: 50%;
+  background-color: #daded2;
+  width: 60%;
+  height: 50%;
   line-height: 2em;
   margin-top: 5px;
   margin-bottom: 30px;
@@ -53,7 +54,6 @@ html *{
   display: flex;
   justify-content: center;
   flex-direction: row;
-  margin-top: 3%;
 }
 
 .option-buttons{
@@ -63,60 +63,27 @@ html *{
   color: white;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   border: none;
-  width: 20%;
-  margin-left: -10%;
+  width: 8vmax;
+  margin-bottom: 0px;
+  margin-top: auto;
+  height: 50px;
   line-height: 2em;
+}
+
+.option-buttons:hover{
+  background-color: hsl(0, 100%, 80%);
+}
+
+.option-buttons:active{
+  background-color: hsl(0, 100%, 90%);
+}
+
+#agregar:hover ~ #data{
+  background-color: hsl(79, 93%, 36%);
 }
 
 .alert{
   color:red;
-}
-
-
-
-#heart
-.heart{  
-  display: flex;
-  justify-content: center;
-  position: relative;
-  margin: 20px;
-  height: 170px;
-  width: 200px;
-  cursor:pointer;
-}
-
-.heart:before,
-.heart:after{
-  position: absolute;
-  content: "";
-  width: 100px;
-  height: 160px;
-  background: linear-gradient(180deg, rgb(210, 155, 241) 0%, rgba(194,99,249,1) 30%);
-  border-radius: 50px 50px 0px 0px;
-}
-
-.heart:before{
-  left: 100px;
-  -webkit-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-  -webkit-transform-origin: 0 100%;
-  transform-origin: 0 100%;
-}
-
-.heart:after{
-  left: 0;  
-  -webkit-transform: rotate(45deg);
-  transform: rotate(45deg);
-  -webkit-transform-origin: 100% 100%;
-  transform-origin: 100% 100%;
-}
-
-.margarita{
-  text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
-  color: #c263f9;
-  position: absolute;
-  top: 50px;
-  left: 50px;
 }
 
 .heart:hover::after,
@@ -128,3 +95,100 @@ html *{
 .heart:hover::before{
   left: 105px;
 }
+
+.wrapper {
+  display: grid;
+  gap: 30px;
+}
+
+.img{  
+  top: 0;
+  width: 18vmax;
+  height: 20vmax;
+  border-radius: 25px;
+}
+
+.food-wrapper{
+  width: 8.5vmax;
+  display: grid;
+  height: 20vmax;
+  padding-left: 30px;
+}
+
+.food-text{
+  padding-bottom: 5px;
+  font-size: 1.5vmax;
+  font-style: italic;
+  color: #30475E;
+}
+
+.ratings {
+  list-style-type: none;
+  margin: 0;
+  width: 95%;
+  direction: rtl;
+  text-align: left;
+}
+
+.star {
+  line-height: 60px;
+  display: inline-block;
+  transition: color 0.2s ease;
+  color: black;
+  text-shadow:0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.star:before {
+  content: '\2605';
+  width: 60px;
+  height: 60px;
+  font-size: 1.6vmax;
+}
+
+.star:hover,
+.star.selected,
+.star:hover ~ .star,
+.star.selected ~ .star{
+  transition: color 0.8s ease;
+  color: rgb(255, 225, 0);
+}
+
+.staron {
+  line-height: 60px;
+  display: inline-block;
+  transition: color 0.2s ease;
+  color: rgb(255, 225, 0);
+  text-shadow:0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.staron:before {
+  content: '\2605';
+  width: 60px;
+  height: 60px;
+  font-size: 1.6vmax;
+}
+
+.staron:hover,
+.staron.selected,
+.staron:hover ~ .star,
+.staron.selected ~ .star{
+  transition: color 0.8s ease;
+  color: rgb(255, 255, 128);
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {  
+   opacity: 1;
+}
+
+.input-quantity{
+  width: 40px;
+  text-align: center;
+}
+
+.dish-data{
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+

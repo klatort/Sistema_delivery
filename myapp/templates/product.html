@@ -1,0 +1,35 @@
+{% extends 'layout/navbar.html' %}
+
+{% load static %}
+
+{% block content %}
+<div>
+    <h1 style="margin-top: 10px;">{{ dish.name }}</h1>
+    <div class="dish-data">
+        <img class="img" src="../static/assets/platos_comida/{{ dish.image | cut:'myapp/static/assets/platos_comida/' }}"></img>
+        <p id="data">{{ dish.description }}</p>
+    </div>
+    <ul class="ratings">
+        <li class="star{%if dish.rating > 4 %}on{% endif %}"></li>
+        <li class="star{%if dish.rating > 3 %}on{% endif %}"></li>
+        <li class="star{%if dish.rating > 2 %}on{% endif %}"></li>
+        <li class="star{%if dish.rating > 1 %}on{% endif %}"></li>
+        <li class="star{%if dish.rating > 0 %}on{% endif %}"></li>
+    </ul>
+    <div>S/{{dish.price}}</div>
+    <div class="low-buttons">
+        <input class="input-quantity" type="number" value="1" min="1" max="99">   
+        <button id="agregar" type="submit"                        class="option-buttons">Agregar</button>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    $('#agregar').click(function() {
+        console.log("holas");
+    $('#data').css({
+        'background-color': 'red',
+        'color': 'white',
+        'font-size': '44px'
+    });
+});
+</script>
+{% endblock %}

@@ -15,17 +15,18 @@
             <a class="link" href="{% url 'test' %}">test</a>
         </li>-->
         <li>
-            <a class="link" {% if usuario == "Invitado" or usuario == "" %}href="{% url 'login' %}">Login
-                {% else %} href="{% url 'index' %}">Bienvenido, {{ usuario }}
+            <a class="link" {% if user == "Invitado" or user == "" %}href="{% url 'login' %}">Login
+                {% else %} href="{% url 'index' %}">Bienvenido, {{ user }}
                 {% endif %}
             </a>
         </li>
         <li>
             <a href="{% url 'test' %}">
-                <img class="icon" src="{% static 'assets/carrito.png' %}"/>
+                <img id="icon" class="icon" src="{% static 'assets/carrito.png' %}"/>
             </a>
         </li>
     </ul>
 </nav>
 
+<div style="margin-bottom: 5%;"></div>
 {% endblock %}

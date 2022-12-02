@@ -1,5 +1,9 @@
 .navbar{
+    position: fixed;
     background: #FF6464;
+    width: 100%;  
+    top: 0;
+    left: 0;
 }
 
 .navbar ul{
@@ -9,8 +13,6 @@
 }
 
 .navbar ul li{
-    margin-top: 20px;
-    margin-bottom: 20px;
     margin-left: 10px;
     margin-right: 10px;
     list-style: none;
@@ -21,6 +23,13 @@
     color: white;
 }
 
+.link{
+    -webkit-transition:all 0.2s;
+    -moz-transition:all 0.2s;
+    -o-transition:all 0.2s;
+    -ms-transition:all 0.2s;
+}
+
 .link:hover{  
     padding: 15px;
     border-radius: 25px;
@@ -29,12 +38,17 @@
 
 h1{
     font-size: 50px;
+    color: #385B89;
 }
 
 .icon {
     margin-right: 20px;
     max-height: 25px;
     vertical-align: middle;
+    -webkit-transition:all 0.2s;
+    -moz-transition:all 0.2s;
+    -o-transition:all 0.2s;
+    -ms-transition:all 0.2s;
 }
 
 .icon:hover{

@@ -1,6 +1,33 @@
 {% extends 'layout/navbar.html' %}
 
+{% load static %}
+
 {% block content %}
-<h1>{{ usuario }}</h1>
-<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo placeat corrupti beatae incidunt. Dolor aspernatur deleniti inventore incidunt dicta nesciunt, placeat mollitia, dignissimos commodi, at laboriosam reiciendis suscipit repellendus similique?</p>
+
+<input class="default-input" placeholder="Buscar">
+<div class="wrapper">
+    {% for food in dishes %}
+        <div style="grid-column: {{ food.pos.0 }}; grid-row: {{ food.pos.1 }};">
+            <div class="container">
+                <a href="product/{{ food }}">
+                    <img class="img" src="static/assets/platos_comida/{{ food.image|cut:'myapp/static/assets/platos_comida/' }}"></img>
+                </a>
+                <div class="food-wrapper">
+                    <div class="food-text" style="grid-row: 2;">{{ food.name }}</div>
+                    <ul class="ratings">
+                        <li class="star{%if food.rating > 4 %}on{% endif %}"></li>
+                        <li class="star{%if food.rating > 3 %}on{% endif %}"></li>
+                        <li class="star{%if food.rating > 2 %}on{% endif %}"></li>
+                        <li class="star{%if food.rating > 1 %}on{% endif %}"></li>
+                        <li class="star{%if food.rating > 0 %}on{% endif %}"></li>
+                    </ul>
+                    <div style="padding-left: 10%;">S/{{food.price}}</div>
+                    <div class="low-buttons">
+                        <button type="submit"                        class="option-buttons">Agregar</button>
+                    </div>
+                </div>                
+            </div>   
+        </div>
+    {% endfor %}
+</div>
 {% endblock %}

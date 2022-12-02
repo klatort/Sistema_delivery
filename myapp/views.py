@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import *
 from .forms import *
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import render
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -9,11 +9,14 @@ from django.contrib.auth.models import User
 # Create your views here.
 def index(request):
     currentUser = request.user.username
-    
+    comida = PlatoComida.objects.all()
+    for x, plato in enumerate(comida):
+       setattr(plato, "pos", (x - int(x / 3) * 3 + 1, 1 + int(x / 3)))
     if currentUser == "":
         currentUser = "Invitado"
     return render(request, 'index.html',{
-        'usuario' : currentUser
+        'user' : currentUser,
+        'dishes' : comida,
     })
 
 def log_in(request):
@@ -37,13 +40,20 @@ def register(request):
             'form' : NewUserForm()
             })
     else:
+        User.save
         user = User(username=request.POST['username'], email=request.POST['email'])
         user.set_password(request.POST['password2'])
         user.save()
-        login(request, user)
         messages.success(request, "Registro exitoso.")
-        return redirect('index')
+        return redirect('login')
     
+def producto(request, comida):
+    producto = PlatoComida.objects.get(name=comida)
+    return render(request, 'product.html', {
+        'dish' : producto
+    })
+    
+  
 def anotherFunction(request):
     if request.method == 'POST':
         task = Task.objects.get(name=list(request.POST)[1])
