@@ -1,0 +1,42 @@
+{% extends 'layout/navbar.html' %}
+
+{% block content %}
+<h1>Platillos en el carrito</h1>
+<div class="container" style="column-gap: 20vw;">
+    <div class="resumen">
+        <div class="container">
+            <div class="separator">
+                <h1>Platillo</h1> 
+            </div>
+            <div class="separator">
+                <h1>Unidades</h1>
+            </div>
+            <div class="separator">
+                <h1>Precio</h1> 
+            </div>
+        </div>
+        <div style="margin-top: 60px; margin-bottom: 20px;">
+            {% for dish in data %}
+                <div class="container">
+                    <div class="separator">
+                        {{ dish.0 }} 
+                    </div>
+                    <div class="separator" style="text-align: center; padding-left: 0px;">
+                        {{ dish.1 }} uds.
+                    </div>
+                    <div class="separator" style="text-align: center; padding-left: 5px;">
+                        S/.{{ dish.2 }}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div>
+        <div style="margin-right: 10vw;">
+            <h1>Total</h1>
+            <h1>S/.{{ total }}</h1>
+            <button class="option-buttons"> Pagar </button>
+        </div>
+    </div>
+</div>
+{% endblock %}

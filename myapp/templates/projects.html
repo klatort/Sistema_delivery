@@ -9,7 +9,7 @@
         <form method="POST">
             <h3>- {{task.name}}</h3>
             <p>&emsp;{{task.description}}{%if task.done == False %}❌{%else%}✅{%endif%}</p>
-                {% csrf_token %}
+            {% csrf_token %}
             <button name="{{task.name}}">Done✅</button>
         </form>
     {% endfor %}

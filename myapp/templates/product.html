@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block content %}
-<div>
+<div style="width: 80%;">
     <h1 style="margin-top: 10px;">{{ dish.name }}</h1>
     <div class="dish-data">
         <img class="img" src="../static/assets/platos_comida/{{ dish.image | cut:'myapp/static/assets/platos_comida/' }}"></img>
@@ -17,19 +17,37 @@
         <li class="star{%if dish.rating > 0 %}on{% endif %}"></li>
     </ul>
     <div>S/{{dish.price}}</div>
+    <form method="POST" id="form">
     <div class="low-buttons">
-        <input class="input-quantity" type="number" value="1" min="1" max="99">   
+        <input class="input-quantity" name="quantity" type="number" value="1" min="1" max="99">
+        {% csrf_token %}
         <button id="agregar" type="submit"                        class="option-buttons">Agregar</button>
     </div>
+    </form>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-    $('#agregar').click(function() {
-        console.log("holas");
-    $('#data').css({
-        'background-color': 'red',
-        'color': 'white',
-        'font-size': '44px'
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        $("#form").submit(function(event) {
+            // Stop form from submitting normally
+            event.preventDefault();
+            var form = $(this);
+            // Send the data using post
+            var posting = $.post( form.attr('action'), form.serialize() );
+            // if success:
+            posting.done(function(data) {
+                const element = document.getElementById('icon')
+                element.classList.add('buy-animation'); // start animation
+                void element.offsetWidth; // trigger reflow
+                setTimeout(function(){
+                    element.classList.remove('buy-animation'); // reset animation
+                }, 350);     
+            });
+            // if failure:
+            posting.fail(function(data) {
+                // 4xx or 5xx response, alert user about failure
+            });
+        });
     });
-});
 </script>
 {% endblock %}

@@ -7,4 +7,5 @@ urlpatterns = [
     path('projects/', views.anotherFunction, name='test'),
     path('register/', views.register, name='register'),
     path('product/<comida>', views.producto, name='comida'),
+    path('cart', views.carrito, name='compras')
 ]
