@@ -22,7 +22,15 @@ def index(request):
             except:
                 query = CarritoCompra(user=currUser)
         except:
-            query = CarritoCompra(user=User())
+            try:
+                query.cart = request.session['cart']
+                print("owo")
+            except:
+                class owo:
+                    def __init__(self) -> None:
+                        pass
+                query = owo()
+                setattr(query, "cart","")
         search = query.cart.find(comida)
         if search == -1:
             query.cart += comida + r"-1/"
@@ -37,7 +45,11 @@ def index(request):
             newString = newString[0] + "-" + str(value)
             print(newString)
             query.cart = query.cart.replace(auxString, newString)
-        query.save()
+        try:
+            query.save()
+        except:
+            request.session['cart'] = query.cart
+            print(request.session['cart'])
     return render(request, 'index.html',{
         'user' : currentUser,
         'dishes' : comidas,
@@ -82,7 +94,14 @@ def producto(request, comida):
             except:
                 query = CarritoCompra(user=currUser)
         except:
-            query = CarritoCompra(user=User(username='Invitado'))
+            try:
+                query.cart = request.session['cart']
+            except:
+                class owo:
+                    def __init__(self) -> None:
+                        pass
+                query = owo()
+                setattr(query, 'cart',"")
         search = query.cart.find(comida)
         if search == -1:
             query.cart += comida + "-" + str(request.POST['quantity']) + r"/"
@@ -97,7 +116,12 @@ def producto(request, comida):
             newString = newString[0] + "-" + str(value)
             print(newString)
             query.cart = query.cart.replace(auxString, newString)
-        query.save()
+        try:
+            print(request.user)
+            query.save()
+        except:
+            request.session['cart'] = query
+            print(request.session['cart'])
     return render(request, 'product.html', {
         'user' : currentUser,
         'dish' : producto
@@ -110,14 +134,7 @@ def carrito(request):
         currUser = User.objects.get(username = currentUser)
         query = CarritoCompra.objects.get(user=currUser)
     except:
-        try:
-            query = CarritoCompra.objects.get(user=User(username='Invitado'))
-        except:
-                return render(request, 'carrito.html',{
-                    'user' : currentUser,
-                    'data' : [["Vacio"]],
-                    'total':  '0.00',
-                })
+        query = request.session[cart]
     cartData = query.cart.split(r"/")
     total = 0
     for i in range(len(cartData) - 1):
